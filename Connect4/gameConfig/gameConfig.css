@@ -1,0 +1,106 @@
+.slideCont_main {
+    position: relative;
+    width: 300px;
+    margin: 0;
+}
+
+.slideCont_sub {
+    margin: 0;
+}
+    .sliderHeader {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .fa-circle-info {
+        position: absolute;
+        display: inline-block;
+
+        margin-left: 5px;
+    }
+
+    .tooltiptext {
+        position: absolute;
+        visibility: hidden;
+        text-align: center;
+
+        padding: 5px 5px;
+        width: 100px;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -13px;
+        margin-bottom: 5px;
+        z-index: 4;
+        font-size: 12px;
+
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        background-color: #f0f0f0;
+        color: black;
+        border: 2px solid #767676;
+        border-radius: 5px;
+    }
+        .fa-circle-info:hover .tooltiptext {
+            visibility: visible;
+        }
+
+    .slider {
+        position: absolute;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        
+        width: 100%;
+        height: 4px;
+        bottom: 8px;
+        margin: 0;
+        z-index: 3;
+
+        background-color: #787878;
+        border-radius: 25px;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+        .slider::-webkit-slider-thumb {
+            appearance: none;
+
+            width: 18px;
+            height: 18px;
+            z-index: 3;
+
+            background-color: #f0f0f0;
+            border: 2px solid #767676;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .slider::-webkit-slider-thumb:hover {
+            background-color: #e5e5e5;
+        }
+
+        .ticks {
+            display: flex;
+            justify-content: space-between;
+            
+            padding-left: 7px;
+            padding-right: 7px;
+            margin: 0;
+            z-index: 2;
+        }
+        
+        .ticks p {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+
+            width: 4px;
+            height: 20px;
+            line-height: 65px;
+            margin: 0;
+            z-index: 2;
+
+            background: #787878;
+            border-radius: 25px;
+        }
