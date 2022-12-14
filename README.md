@@ -1,7 +1,7 @@
 # Configurable-Connect4-Game-JavaScript-and-jQuery
 Test the program yourself: https://configurable-connect4-game-javascript-and-jquery.mohammad-su.repl.co/
 
-A configurable Connect 4 game - includes multiple game modes, colour settings, and animations.
+A Connect 4 game that includes multiple game modes, colour settings, and animations.
 
 Future update ideas:
 
