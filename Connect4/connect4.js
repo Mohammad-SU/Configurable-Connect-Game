@@ -267,7 +267,7 @@ function setPiece() {
             checkWinner();
         }
         changeColumns_checkWinner(r, c) // for default gamemode
-        if (doublesColumn && tileDC != null) {changeColumns_checkWinner(r-1, c)} // r-1 because this tile is not empty at this point, the new empty tile would be r-2, unless these reach the end of the row
+        if (doublesColumn && tileDC != null) {changeColumns_checkWinner(r-1, c)} // r-1 because this tile is not empty at this point - the new empty tile would be r-2, unless these reach the end of the column
         else if (doublesRow && tileDR != null) {changeColumns_checkWinner(rDR, c+1)};
 
         if ($(".tile:not(.piece_1)").length + $(".tile:not(.piece_2)").length - $(".tile").length == 0 && gameOver == false) { // If no empty tiles remain and there is no winner, then gameEnd()
