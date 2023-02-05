@@ -8,4 +8,4 @@ Future update ideas:
 - AI opponent using the minimax algorithm and alpha-beta pruning
 - Correct formatting for non-desktop devices
 
-Audio from ZapSplat.com.
+The sound effects are from ZapSplat.com.
