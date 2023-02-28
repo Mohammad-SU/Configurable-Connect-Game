@@ -1,5 +1,5 @@
 # Configurable Connect 4 Game
-Test the program yourself: https://configurable-connect4-game.mohammad-su.repl.co/
+Test the program: https://configurable-connect4-game.mohammad-su.repl.co/
 
 A Connect 4 game that includes multiple game modes, colour settings, and animations.
 
