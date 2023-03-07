@@ -1,5 +1,5 @@
 # Configurable Connect 4 Game
-Test the program: https://configurable-connect4-game.mohammad-su.repl.co/
+Test the program: https://configurable-connect4-game.netlify.app/
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png)
 
