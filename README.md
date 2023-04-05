@@ -8,5 +8,5 @@ A Connect 4 game that includes multiple game modes, colour settings, and animati
 ### Future update ideas:
 - AI opponent using the minimax algorithm and alpha-beta pruning
 - Correct formatting for non-desktop devices
-
+s
 Sound effects from ZapSplat.com.
