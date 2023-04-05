@@ -2,7 +2,7 @@
 ## Test the program: https://configurable-connect4-game.netlify.app/
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png)
-s
+
 A Connect 4 game that includes multiple game modes, colour settings, and animations.
 
 ### Future update ideas:
