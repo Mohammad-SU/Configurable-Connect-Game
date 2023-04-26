@@ -13,10 +13,8 @@
   - Enable pieces to swap to the opposing player's colour every selected round
 - Players can change the colours of their pieces and related animations
 - Animations, such as falling pieces, blinking of winning pieces, etc.
-- Sound effects
+- Sound effects (from ZapSplat.com)
 
 ### Future update ideas:
 - AI opponent using the minimax algorithm and alpha-beta pruning
 - Correct formatting for non-desktop devices
-
-Sound effects from ZapSplat.com.
