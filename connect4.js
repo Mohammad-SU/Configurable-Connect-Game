@@ -285,7 +285,7 @@ function setPiece() {
 function checkWinner() {
     function checkWinner_main(r, c, ri, ci) { // ri = r increase, etc. Used to check the next index for winning tiles in the board array.
         if (board[r][c] != " ") {
-            switch(connectNum) { // Get winning tile elements from board array
+            switch(connectNum) { // Get winning tiles from board array
                 case 3:
                     if (board[r][c] == board[r+ri][c+ci] && board[r+ri][c+ci] == board[r+ri*2][c+ci*2]) {
                         highlightWin(r, c);
@@ -308,7 +308,7 @@ function checkWinner() {
                     }
             }
             function highlightWin(r, c) {
-                for (let i = 0; i < connectNum; i++) { // Get ID of each winning tile element in order to add blink
+                for (let i = 0; i < connectNum; i++) { // Get each winning tile by element ID in order to add blink
                     switch(true) {
                         case ri == 0 && ci == 1: // Horizontal
                             var winningTile = document.getElementById(r.toString() + "-" + (c+i).toString());
