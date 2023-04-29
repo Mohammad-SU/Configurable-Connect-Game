@@ -44,7 +44,7 @@ const colourTile_1s = document.querySelectorAll(".colourTile.one");
 const colourTile_2s = document.querySelectorAll(".colourTile.two");
 
 function changeColour_1() { 
-    if (this.innerText == "1" || this.innerText == "2") {return}; // If a colour is already selected by player 1 or player 2, return nothing.
+    if (this.innerText == "1" || this.innerText == "2") {return}; // If a colour is already selected by player 1 or player 2 and is then clicked, return nothing.
     colourTile_1s.forEach(colourTile_1 => {
         if (colourTile_1.innerText == "1") {colourTile_1.innerText = ""}; // Display "1" on the selected element, remove "1" from the element if a different element is selected.
     })
