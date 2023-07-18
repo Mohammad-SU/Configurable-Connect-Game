@@ -1,6 +1,6 @@
 var board;
-var player_1 = "p1"; // Used for updating board array
-var player_2 = "p2";
+const player_1 = "p1"; // Used for updating board array
+const player_2 = "p2";
 var currPlayer = player_1;
 var rows = 6;
 var columns = 7;
@@ -8,12 +8,20 @@ var currColumns;
 var currColumnsSize = [5, 5, 5, 5, 5, 5, 5];
 var gameOver = false;
 var dropRunning = false;
-var winner = document.getElementById("winner");
-var root = document.querySelector(":root");
+const winner = document.getElementById("winner");
+const root = document.querySelector(":root");
+const textShadowVal = "-0.0313rem -0.0313rem 0 navy, 0 -0.0313rem 0 navy, .0313rem -0.0313rem 0 navy, .0313rem 0 0 navy, .0313rem .0313rem 0 navy, 0 .0313rem 0 navy, -0.0313rem .0313rem 0 navy, -0.0313rem 0 0 navy"
 
-//TODO:
-
-//FIXME:
+function changePlayerColourNumText() {
+    if (currPlayer == player_1) {
+        $("#playerColourNum_1").css({color: colour_1, textShadow: textShadowVal})
+        $("#playerColourNum_2").css({color: "black", textShadow: "none"})
+    }
+    else {
+        $("#playerColourNum_1").css({color: "black", textShadow: "none"})
+        $("#playerColourNum_2").css({color: colour_2, textShadow: textShadowVal})
+    }
+}
 
 setGame();
 function setGame() {
@@ -30,7 +38,7 @@ function setGame() {
     for (let r = 0; r < rows; r++) {
         let row = [];
         for (let c = 0; c < columns; c++) {
-            row.push(" "); 
+            row.push(" ");
             // append HTML elements (row * column) number of times:
             // <div id="0-0" class="tile"></div>
             let tile = document.createElement("div");
@@ -50,12 +58,12 @@ function setGame() {
         hoverTileSet(hoverCont_1, c)
         if (doublesColumn) {hoverTileSet(hoverCont_DC, c+"-"+"DC")}
     }
-    let hoverCont_1_bottom = (tileFullSize * rows) + 20;
-    $("#board_html").css({"width": tileFullSize * columns+"px", "height": tileFullSize * rows+"px"});
-    $(".tile").css({"width": tileSize+"px", "height": tileSize+"px", "margin": tileMargins+"px", "borderWidth": tileBorderWidth+"px", "boxShadow": "inset 0px 0px "+ tileBorderWidth+"px" + " black"});
-    $(".hoverTile").css({"width": tileSize-tileBorderWidth+"px", "height": tileSize-tileBorderWidth+"px", "margin": tileMargins+(tileBorderWidth/2)+"px", "fontSize": tileSize/2-tileMargins+"px"});
-    $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"px", "bottom": hoverCont_1_bottom+"px"});
-    $("#hoverCont_DC").css({"bottom": hoverCont_1_bottom + tileFullSize - tileBorderWidth+"px"});
+    let hoverCont_1_bottom = (tileFullSize * rows) + 1.25;
+    $("#board_html").css({"width": tileFullSize * columns+"rem", "height": tileFullSize * rows+"rem"});
+    $(".tile").css({"width": tileSize+"rem", "height": tileSize+"rem", "margin": tileMargins+"rem", "borderWidth": tileBorderWidth+"rem", "boxShadow": "inset 0rem 0rem "+ tileBorderWidth+"rem" + " black"});
+    $(".hoverTile").css({"width": tileSize-tileBorderWidth+"rem", "height": tileSize-tileBorderWidth+"rem", "margin": tileMargins+(tileBorderWidth/2)+"rem", "fontSize": tileSize/2-tileMargins+"rem"});
+    $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"rem", "bottom": hoverCont_1_bottom + 1.5+"rem"});
+    $("#hoverCont_DC").css({"bottom": hoverCont_1_bottom + tileFullSize - tileBorderWidth + 1.5+"rem"});
     
     const hoverTiles = document.querySelectorAll(".hoverTile");
     const tiles = document.querySelectorAll(".tile");
@@ -67,23 +75,20 @@ function setGame() {
         $(tile).click(hoverTileCheck);
 
         function hoverTileCheck() { // Change CSS of invisible elements (hoverTiles) above "board_html" to match the current player piece
-            if (doublesAny && doublesAnyRound_p1 == 2) {currPlayer = player_2}
-            else if (doublesAny && doublesAnyRound_p2 == 2) {currPlayer = player_1};
-
             hoverTiles.forEach(hoverTile => {
                 function hoverTileFill(colour, shadowWidth, cursorType) {
-                    $(hoverTile).css({"backgroundColor": colour, "boxShadow": "inset 0px 0px "+ shadowWidth + " black"})
+                    $(hoverTile).css({"backgroundColor": colour, "boxShadow": "inset 0rem 0rem "+ shadowWidth + " black"})
                     tile.style.cursor = cursorType;
                     hoverTile.innerText = ""
                 }
                 let hoverTileCoordC = parseInt(hoverTile.id)
                 if ((tileCoordC == hoverTileCoordC) || (doublesRow && tileCoordC == hoverTileCoordC-1)) {
                     if (gameOver) {
-                        hoverTileFill("transparent", "0px", "default")
+                        hoverTileFill("transparent", "0rem", "default")
                         return;
                     }
-                    if (currPlayer == player_1) {hoverTileFill(colour_1, tileBorderWidth+"px", "pointer")}
-                    else {hoverTileFill(colour_2, tileBorderWidth+"px", "pointer")};
+                    if (currPlayer == player_1) {hoverTileFill(colour_1, tileBorderWidth+"rem", "pointer")}
+                    else {hoverTileFill(colour_2, tileBorderWidth+"rem", "pointer")};
                     // Change text colour to white for more contrast
                     if (doublesAny && (["forestgreen", "blue", "blueviolet", "lightslategray", "black"].indexOf(hoverTile.style.backgroundColor) > -1)) {hoverTile.style.color = "white"}
                     else {hoverTile.style.color = "black"};
@@ -94,10 +99,12 @@ function setGame() {
             })
         }
         function hoverTileLeave() {
-            $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0px 0px 0px black"});
+            $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0rem 0rem 0rem black"});
             hoverTiles.forEach(hoverTile => {hoverTile.innerText = ""});
         }
     })
+
+    changePlayerColourNumText();
 
     if (doublesAny) {
         doublesAnyRound_p1 = 0;
@@ -120,15 +127,6 @@ function setPiece() {
     $(".hoverTile").css({"display": "none"});
     $(".tile").css({"pointerEvents": "none"});
     if (doublesRow) {var rDR = currColumns[c+1]}; // r Doubles Row game-mode
-    
-    if (doublesAny && doublesAnyRound_p1 == 2) {
-        doublesAnyRound_p1 = 0;
-        currPlayer = player_2;
-    }
-    else if (doublesAny && doublesAnyRound_p2 == 2) {
-        doublesAnyRound_p2 = 0;
-        currPlayer = player_1;
-    }
 
     // Falling piece animation
     function placeDrop(dropTileType, colour) {
@@ -219,8 +217,11 @@ function setPiece() {
             if (doublesColumn && tileDC != null) {place(tileDC, "piece_1", ".piece_1", colour_1)}
             else if (doublesRow && tileDR != null) {place(tileDR, "piece_1", ".piece_1", colour_1)};
 
-            if (doublesAny && doublesAnyRound_p1 < 2) {doublesAnyRound_p1+= 1}
-            else if (doublesAny == false) {currPlayer = player_2};
+            if (doublesAny && doublesAnyRound_p1 < 2) {doublesAnyRound_p1 += 1}
+            else if (doublesAny == false) {
+                currPlayer = player_2
+                changePlayerColourNumText();
+            };
         }
         else {
             place(tile, "piece_2", ".piece_2", colour_2)
@@ -228,7 +229,10 @@ function setPiece() {
             else if (doublesRow && tileDR != null) {place(tileDR, "piece_2", ".piece_2", colour_2)};
             
             if (doublesAny && doublesAnyRound_p2 < 2) {doublesAnyRound_p2 += 1}
-            else if (doublesAny == false) {currPlayer = player_1};
+            else if (doublesAny == false) {
+                currPlayer = player_1;
+                changePlayerColourNumText();
+            };
         }
         if ((doublesRow && rDR == undefined) || (doublesRow && rDR == r) || doublesRow == false) {pieceSFX_1.play()};
         
@@ -278,6 +282,17 @@ function setPiece() {
             winner.innerText = "Draw!";
             if (blitzEnabled) {blitzStart = false};
             gameEnd();
+        }
+
+        if (doublesAny && doublesAnyRound_p1 == 2) {
+            doublesAnyRound_p1 = 0;
+            currPlayer = player_2;
+            changePlayerColourNumText();
+        }
+        else if (doublesAny && doublesAnyRound_p2 == 2) {
+            doublesAnyRound_p2 = 0;
+            currPlayer = player_1;
+            changePlayerColourNumText();
         }
     }
 }
@@ -409,7 +424,7 @@ function gameEnd() {
     dropRunning = false;
     $(".tile").css({"pointerEvents": "auto"});
     $(".clockIcon").css({display: "none"});
-    $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0px 0px 0px black"});
+    $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0rem 0rem 0rem black"});
     gameOver = true;
     let resetButton = document.getElementById("resetButton");
     blitzStart ? resetButton.innerText = "Start" : resetButton.innerText = "Reset";

@@ -1,6 +1,6 @@
 .slideCont_main {
     position: relative;
-    width: 300px;
+    width: 18.75rem;
     margin: 0;
 }
 
@@ -8,16 +8,16 @@
     margin: 0;
 }
     .sliderHeader {
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: .3125rem;
     }
 
     .fa-circle-info {
         position: absolute;
         display: inline-block;
 
-        margin-left: 5px;
+        margin-left: .3125rem;
     }
 
     .tooltiptext {
@@ -25,21 +25,21 @@
         visibility: hidden;
         text-align: center;
 
-        padding: 5px 5px;
-        width: 100px;
+        padding: .3125rem .3125rem;
+        width: 6.25rem;
         bottom: 100%;
         left: 50%;
-        margin-left: -13px;
-        margin-bottom: 5px;
+        margin-left: -0.8125rem;
+        margin-bottom: .3125rem;
         z-index: 4;
-        font-size: 12px;
+        font-size: .75rem;
 
         font-family: Arial, Helvetica, sans-serif;
         font-weight: bold;
         background-color: #f0f0f0;
         color: black;
-        border: 2px solid #767676;
-        border-radius: 5px;
+        border: .125rem solid #767676;
+        border-radius: .3125rem;
     }
         .fa-circle-info:hover .tooltiptext {
             visibility: visible;
@@ -52,25 +52,25 @@
         align-items: center;
         
         width: 100%;
-        height: 4px;
-        bottom: 8px;
+        height: .25rem;
+        bottom: .5rem;
         margin: 0;
         z-index: 3;
 
         background-color: #787878;
-        border-radius: 25px;
+        border-radius: 1.5625rem;
         box-sizing: border-box;
         cursor: pointer;
     }
         .slider::-webkit-slider-thumb {
             appearance: none;
 
-            width: 18px;
-            height: 18px;
+            width: 1.125rem;
+            height: 1.125rem;
             z-index: 3;
 
             background-color: #f0f0f0;
-            border: 2px solid #767676;
+            border: .125rem solid #767676;
             border-radius: 50%;
             cursor: pointer;
         }
@@ -83,8 +83,8 @@
             display: flex;
             justify-content: space-between;
             
-            padding-left: 7px;
-            padding-right: 7px;
+            padding-left: .4375rem;
+            padding-right: .4375rem;
             margin: 0;
             z-index: 2;
         }
@@ -95,12 +95,12 @@
             justify-content: center;
             text-align: center;
 
-            width: 4px;
-            height: 20px;
-            line-height: 65px;
+            width: .25rem;
+            height: 1.25rem;
+            line-height: 4.0625rem;
             margin: 0;
             z-index: 2;
 
             background: #787878;
-            border-radius: 25px;
+            border-radius: 1.5625rem;
         }

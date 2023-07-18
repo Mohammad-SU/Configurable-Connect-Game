@@ -1,15 +1,15 @@
 $("#colourCollapser").click(function() {
-    if ($("#colourContent").css("width") == "350px") {
-        $("#colourContent").css({"width": "0px"})
-        $("#colourCollapser").css({"marginLeft": "0px"})
-        $(".colourArrow.topArrow").removeClass("rotateLeft")
-        $(".colourArrow.bottomArrow").removeClass("rotateRight")
+    if ($("#colourContent").css("width") != "0px") {
+        $("#colourContent").css({"width": "0"})
+        $("#colourCollapser").css({"marginLeft": "0"})
+        $(".colourArrow.topArrow").css({"rotate": "0deg"})
+        $(".colourArrow.bottomArrow").css({"rotate": "0deg"})
     } 
     else {
-        $("#colourContent").css({"width": "350px"})
-        $("#colourCollapser").css({"marginLeft": "350px"})
-        $(".colourArrow.topArrow").addClass("rotateLeft")
-        $(".colourArrow.bottomArrow").addClass("rotateRight")
+        $("#colourContent").css({"width": "21.875rem"})
+        $("#colourCollapser").css({"marginLeft": "21.875rem"})
+        $(".colourArrow.topArrow").css({"rotate": "-180deg"})
+        $(".colourArrow.bottomArrow").css({"rotate": "180deg"})
     }
 })
 
@@ -62,6 +62,7 @@ function changeColour_1() {
     PCC_1.style.backgroundColor = colour_1;
     root.style.setProperty("--headerFirstColour", colour_1);
     colourAnimation();
+    changePlayerColourNumText();
 }
 
 function changeColour_2() {
@@ -82,6 +83,7 @@ function changeColour_2() {
     PCC_2.style.backgroundColor = colour_2;
     root.style.setProperty("--headerLastColour", colour_2);
     colourAnimation();
+    changePlayerColourNumText();
 }
 
 document.querySelectorAll(".colourTile.one").forEach(function(element) {element.addEventListener('click', changeColour_1);});

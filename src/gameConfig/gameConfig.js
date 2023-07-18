@@ -1,23 +1,23 @@
 $("#configCollapser").click(function() {
-    if ($("#configContent").css("width") == "350px") {
-        $("#configContent").css({"width": "0px"})
-        $("#configCollapser").css({"marginRight": "0px"})
-        $(".configArrow.topArrow").removeClass("rotateLeftOp")
-        $(".configArrow.bottomArrow").removeClass("rotateRightOp")
+    if ($("#configContent").css("width") != "0px") {
+        $("#configContent").css({"width": "0"})
+        $("#configCollapser").css({"marginRight": "0"})
+        $(".configArrow.topArrow").css({"rotate": "0deg"})
+        $(".configArrow.bottomArrow").css({"rotate": "0deg"})
     }
     else {
-        $("#configContent").css({"width": "350px"})
-        $("#configCollapser").css({"marginRight": "350px"})
-        $(".configArrow.topArrow").addClass("rotateLeftOp")
-        $(".configArrow.bottomArrow").addClass("rotateRightOp")
+        $("#configContent").css({"width": "21.875rem"})
+        $("#configCollapser").css({"marginRight": "21.875rem"})
+        $(".configArrow.topArrow").css({"rotate": "180deg"})
+        $(".configArrow.bottomArrow").css({"rotate": "-180deg"})
     }
 })
 
 // Audio from ZapSplat.com
-var pieceSFX_1 = new Audio("sounds/pieceSFX.mp3");
-var pieceSFX_2 = new Audio("sounds/pieceSFX.mp3");
-var swapSFX = new Audio("sounds/swapSFX.mp3");
-var winnerSFX = new Audio("sounds/winnerSFX.mp3");
+var pieceSFX_1 = new Audio("src/assets/sounds/pieceSFX.mp3");
+var pieceSFX_2 = new Audio("src/assets/sounds/pieceSFX.mp3");
+var swapSFX = new Audio("src/assets/sounds/swapSFX.mp3");
+var winnerSFX = new Audio("src/assets/sounds/winnerSFX.mp3");
 var audios = [];
 audios.push(pieceSFX_1, pieceSFX_2, swapSFX, winnerSFX);
 function changeVolume(volume) {audios.forEach(audioElement => audioElement.volume = volume)};
@@ -59,76 +59,76 @@ function mainReset() { // Avoid multiple "setInterval" instances when changing s
 }
 
 let sizeSlider = document.getElementById("sizeSlider");
-var tileSize = 80;
-var tileFullSize = 90;  // Including margins
-var tileMargins = 5;
+var tileSize = 5;
+var tileFullSize = 5.625;  // Including margins
+var tileMargins = .3125;
 var tileSize = tileFullSize - (tileMargins * 2);
-var tileBorderWidth = 5;
+var tileBorderWidth = .3125;
 
 sizeSlider.oninput = function() {
     switch (sizeSlider.value) {
         case "1": // 20 slots
             rows = 4;
             columns = 5
-            tileFullSize = 130;
-            tileMargins = 8;
-            tileBorderWidth = 7;
+            tileFullSize = 8.125;
+            tileMargins = .5;
+            tileBorderWidth = .4375;
             break;
         case "2": // 30
             rows = 5;
             columns = 6;
-            tileFullSize = 105;
-            tileMargins = 6;
-            tileBorderWidth = 6;
+            tileFullSize = 6.5625;
+            tileMargins = .375;
+            tileBorderWidth = .375;
             break;
         case "3": // 42 (classic)
             rows = 6;
             columns = 7;
-            tileFullSize = 90;
-            tileMargins = 5;
-            tileBorderWidth = 5;
+            tileFullSize = 5.625;
+            tileMargins = .3125;
+            tileBorderWidth = .3125;
             break;
         case "4": // 56
             rows = 7;
             columns = 8;
-            tileFullSize = 80;
-            tileMargins = 4;
-            tileBorderWidth = 5;
+            tileFullSize = 5;
+            tileMargins = .25;
+            tileBorderWidth = .3125;
             break;
         case "5": // 72
             rows = 8;
             columns = 9;
-            tileFullSize = 70;
-            tileMargins = 4;
-            tileBorderWidth = 5;
+            tileFullSize = 4.375;
+            tileMargins = .25;
+            tileBorderWidth = .3125;
             break;
         case "6": // 90
             rows = 9;
             columns = 10;
-            tileFullSize = 62;
-            tileMargins = 3;
-            tileBorderWidth = 5;
+            tileFullSize = 3.875;
+            tileMargins = .1875;
+            tileBorderWidth = .3125;
             break;
         case "7": // 110
             rows = 10;
             columns = 11;
-            tileFullSize = 56;
-            tileMargins = 3;
-            tileBorderWidth = 4;
+            tileFullSize = 3.5;
+            tileMargins = .1875;
+            tileBorderWidth = .25;
             break;
         case "8": // 132
             rows = 11;
             columns = 12;
-            tileFullSize = 51;
-            tileMargins = 3;
-            tileBorderWidth = 4;
+            tileFullSize = 3.1875;
+            tileMargins = .1875;
+            tileBorderWidth = .25;
             break;
         case "9": // 156
             rows = 12;
             columns = 13;   
-            tileFullSize = 47;   
-            tileMargins = 2;
-            tileBorderWidth = 4;
+            tileFullSize = 2.9375;   
+            tileMargins = .125;
+            tileBorderWidth = .25;
             break;
     }
     tileSize = tileFullSize - (tileMargins * 2);
