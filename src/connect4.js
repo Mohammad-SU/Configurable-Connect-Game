@@ -10,7 +10,7 @@ var gameOver = false;
 var dropRunning = false;
 const winner = document.getElementById("winner");
 const root = document.querySelector(":root");
-const textShadowVal = "-0.0313rem -0.0313rem 0 navy, 0 -0.0313rem 0 navy, .0313rem -0.0313rem 0 navy, .0313rem 0 0 navy, .0313rem .0313rem 0 navy, 0 .0313rem 0 navy, -0.0313rem .0313rem 0 navy, -0.0313rem 0 0 navy"
+const textShadowVal = "-0.5px -0.5px 0 navy, 0 -0.5px 0 navy, 0.5px -0.5px 0 navy, 0.5px 0 0 navy, 0.5px 0.5px 0 navy, 0 0.5px 0 navy, -0.5px 0.5px 0 navy, -0.5px 0 0 navy"
 
 function changePlayerColourNumText() {
     if (currPlayer == player_1) {
@@ -32,6 +32,7 @@ function setGame() {
     currColumns = currColumnsSize;
     if (swapEnabled) {
         rounds = 1;
+        $("#winner").addClass("animate_1");
         winner.innerText = ("Swap in: " + swapRound + " rounds");
     };
 
@@ -58,45 +59,54 @@ function setGame() {
         hoverTileSet(hoverCont_1, c)
         if (doublesColumn) {hoverTileSet(hoverCont_DC, c+"-"+"DC")}
     }
-    let hoverCont_1_bottom = (tileFullSize * rows) + 1.25;
     $("#board_html").css({"width": tileFullSize * columns+"rem", "height": tileFullSize * rows+"rem"});
     $(".tile").css({"width": tileSize+"rem", "height": tileSize+"rem", "margin": tileMargins+"rem", "borderWidth": tileBorderWidth+"rem", "boxShadow": "inset 0rem 0rem "+ tileBorderWidth+"rem" + " black"});
     $(".hoverTile").css({"width": tileSize-tileBorderWidth+"rem", "height": tileSize-tileBorderWidth+"rem", "margin": tileMargins+(tileBorderWidth/2)+"rem", "fontSize": tileSize/2-tileMargins+"rem"});
-    $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"rem", "bottom": hoverCont_1_bottom + 1.5+"rem"});
-    $("#hoverCont_DC").css({"bottom": hoverCont_1_bottom + tileFullSize - tileBorderWidth + 1.5+"rem"});
+    $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"rem"});
     
     const hoverTiles = document.querySelectorAll(".hoverTile");
     const tiles = document.querySelectorAll(".tile");
     tiles.forEach(tile => {
         let tileCoords = tile.id.split("-");
         let tileCoordC = parseInt(tileCoords[1]); // Tile coordinate (column)
+        $(tile).on({"touchstart": function() {
+            $(".hoverCont").hide()
+        }});
         $(tile).mouseover(hoverTileCheck).mouseleave(hoverTileLeave);
         $(tile).click(setPiece);
         $(tile).click(hoverTileCheck);
 
         function hoverTileCheck() { // Change CSS of invisible elements (hoverTiles) above "board_html" to match the current player piece
-            hoverTiles.forEach(hoverTile => {
-                function hoverTileFill(colour, shadowWidth, cursorType) {
-                    $(hoverTile).css({"backgroundColor": colour, "boxShadow": "inset 0rem 0rem "+ shadowWidth + " black"})
-                    tile.style.cursor = cursorType;
-                    hoverTile.innerText = ""
-                }
-                let hoverTileCoordC = parseInt(hoverTile.id)
-                if ((tileCoordC == hoverTileCoordC) || (doublesRow && tileCoordC == hoverTileCoordC-1)) {
-                    if (gameOver) {
-                        hoverTileFill("transparent", "0rem", "default")
-                        return;
+            if ($(".hoverCont").is(":hidden")) {
+                setTimeout(function() {
+                    $(".hoverCont").show()
+                }, 200)
+                return
+            }
+            else {
+                hoverTiles.forEach(hoverTile => {
+                    function hoverTileFill(colour, shadowWidth, cursorType) {
+                        $(hoverTile).css({"backgroundColor": colour, "boxShadow": "inset 0rem 0rem "+ shadowWidth + " black"})
+                        tile.style.cursor = cursorType;
+                        hoverTile.innerText = ""
                     }
-                    if (currPlayer == player_1) {hoverTileFill(colour_1, tileBorderWidth+"rem", "pointer")}
-                    else {hoverTileFill(colour_2, tileBorderWidth+"rem", "pointer")};
-                    // Change text colour to white for more contrast
-                    if (doublesAny && (["forestgreen", "blue", "blueviolet", "lightslategray", "black"].indexOf(hoverTile.style.backgroundColor) > -1)) {hoverTile.style.color = "white"}
-                    else {hoverTile.style.color = "black"};
-
-                    if (doublesAny && (doublesAnyRound_p1 == 0 || doublesAnyRound_p2 == 0)) {hoverTile.innerText = "x2"};
-                    if (doublesAny && (doublesAnyRound_p1 == 1 || doublesAnyRound_p2 == 1)) {hoverTile.innerText = "x1"};
-                }
-            })
+                    let hoverTileCoordC = parseInt(hoverTile.id)
+                    if ((tileCoordC == hoverTileCoordC) || (doublesRow && tileCoordC == hoverTileCoordC-1)) {
+                        if (gameOver) {
+                            hoverTileFill("transparent", "0rem", "default")
+                            return;
+                        }
+                        if (currPlayer == player_1) {hoverTileFill(colour_1, tileBorderWidth+"rem", "pointer")}
+                        else {hoverTileFill(colour_2, tileBorderWidth+"rem", "pointer")};
+                        // Change text colour to white for more contrast
+                        if (doublesAny && (["forestgreen", "blue", "blueviolet", "lightslategray", "black"].indexOf(hoverTile.style.backgroundColor) > -1)) {hoverTile.style.color = "white"}
+                        else {hoverTile.style.color = "black"};
+    
+                        if (doublesAny && (doublesAnyRound_p1 == 0 || doublesAnyRound_p2 == 0)) {hoverTile.innerText = "x2"};
+                        if (doublesAny && (doublesAnyRound_p1 == 1 || doublesAnyRound_p2 == 1)) {hoverTile.innerText = "x1"};
+                    }
+                })
+            }
         }
         function hoverTileLeave() {
             $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0rem 0rem 0rem black"});
@@ -280,6 +290,7 @@ function setPiece() {
 
         if ($(".tile:not(.piece_1)").length + $(".tile:not(.piece_2)").length - $(".tile").length == 0 && gameOver == false) { // If no empty tiles remain and there is no winner, then gameEnd()
             winner.innerText = "Draw!";
+            $("#winner").addClass("animate_1");
             if (blitzEnabled) {blitzStart = false};
             gameEnd();
         }
@@ -396,6 +407,7 @@ function setWinner(r, c) {
     else if (board[r][c] == player_2) {winner.innerText = "Player 2 wins!"};
     if (blitzEnabled) {blitzStart = false};
     winner.classList.add("animateText");
+    $("#winner").addClass("animate_1");
     colourAnimation();
     winnerSFX.play();
     gameEnd();
@@ -413,23 +425,23 @@ function setWinner_countdown() {
     }
     if (blitzEnabled) {blitzStart = false};
     winner.classList.add("animateText");
+    $("#winner").addClass("animate_1");
     colourAnimation();
     gameEnd();
 }
 
 function gameEnd() {
-    $("#resetPlaceholder").css({display: "none"});
     clearTimeout(dropAddTimeout);
     clearTimeout(dropRemoveTimeout);
     dropRunning = false;
     $(".tile").css({"pointerEvents": "auto"});
-    $(".clockIcon").css({display: "none"});
+    $(".clockIcon").removeClass("animate_1");
     $(".hoverTile").css({"backgroundColor": "transparent", "boxShadow": "inset 0rem 0rem 0rem black"});
     gameOver = true;
     let resetButton = document.getElementById("resetButton");
     blitzStart ? resetButton.innerText = "Start" : resetButton.innerText = "Reset";
     if (winner.innerText == "Draw!") {resetButton.innerText = "Reset";}
-    resetButton.style.display = "inline-block";
+    $("#resetButton").addClass("animate_1");
     resetButton.addEventListener("click", resetGame);
     if (updateCountdown_running) {clearInterval(playerTime)};
 }
@@ -439,14 +451,13 @@ function resetGame() {
     clearTimeout(dropRemoveTimeout);
     dropRunning = false;
     $(".tile").css({"pointerEvents": "auto"});
-    winner.innerText = "";
-    resetButton.style.display = "none";
-    $("#resetPlaceholder").css({display: "inline-block"});
+    $("#resetButton").removeClass("animate_1");
     gameOver = false;
     board_html.remove();
     $(".hoverTile").remove();
     $(".countdown").removeClass("blinkCountdown");
     $("#winner").removeClass("animateText");
+    $("#winner").removeClass("animate_1");
 
     currColumnsSize = [];
     var rowNeg = rows - 1;  // "rowNeg" = rows "negated" by one
@@ -474,15 +485,15 @@ function resetGame() {
                 p1_seconds_html = p1_seconds_html < 10 ? "0" + p1_seconds_html : p1_seconds_html; // If seconds less than 10, adds "0" char next to it, else display as normal
                 countdown_1.innerText = p1_minutes + ":" + p1_seconds_html;
                 p1_time--;
-                $("#clockIcon_1").css({display: "inline-block"});
-                $("#clockIcon_2").css({display: "none"});
+                $("#clockIcon_1").addClass("animate_1");
+                $("#clockIcon_2").removeClass("animate_1");
             }
             else if (currPlayer == player_2) {
                 p2_seconds_html = p2_seconds_html < 10 ? "0" + p2_seconds_html : p2_seconds_html;
                 countdown_2.innerText = p2_minutes + ":" + p2_seconds_html;
                 p2_time--;
-                $("#clockIcon_1").css({display: "none"});
-                $("#clockIcon_2").css({display: "inline-block"});    
+                $("#clockIcon_1").removeClass("animate_1");
+                $("#clockIcon_2").addClass("animate_1");    
             }
 
             if (countdown_1.innerText == "0:01" || countdown_2.innerText == "0:01") {winnerSFX.play()}; // Due to sound delay
@@ -500,3 +511,21 @@ function resetGame() {
 
     setGame();
 }
+
+function handleBlitzOverlap() {
+    const clockIcon_1 = document.querySelector("#clockIcon_1")
+    rect = clockIcon_1.getBoundingClientRect();
+    x = rect.left;
+    y = rect.top;
+    topElt = document.elementFromPoint(x, y);
+    if (clockIcon_1.isSameNode(topElt)) {
+        console.log('no overlapping');
+    }
+}
+$(window).on('resize', function() { // If window width is resized, run functions
+    handleBlitzOverlap();
+})
+handleBlitzOverlap();
+
+
+

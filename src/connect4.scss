@@ -9,6 +9,48 @@ html {
     @media (max-height: 752px) {
         font-size: 14px;
     }
+    @media (max-height: 650px), (max-width: 760px) {
+        font-size: 13px;
+    }
+    @media (max-height: 610px), (max-width: 710px) {
+        font-size: 12px;
+    }
+    @media (max-height: 567px), (max-width: 650px) {
+        font-size: 11.5px;
+    }
+    @media (max-height: 535px), (max-width: 630px) {
+        font-size: 11px;
+    }
+    @media (max-height: 515px), (max-width: 610px) {
+        font-size: 10px;
+    }
+    @media (max-height: 465px), (max-width: 535px) {
+        font-size: 9px;
+    }
+    @media (max-height: 420px) {
+        font-size: 8.9px;
+    }
+    @media (max-height: 410px) {
+        font-size: 8.7px;
+    }
+    @media (max-height: 403px) {
+        font-size: 8.3px;
+    }
+    @media (max-height: 389px) {
+        font-size: 8px;
+    }
+    @media (max-height: 374px) {
+        font-size: 7.7px;
+    }
+    @media (max-height: 357px) {
+        font-size: 7.4px;
+    }
+    @media (max-height: 357px) {
+        font-size: 7px;
+    }
+    @media (max-height: 328px) {
+        font-size: 6.8px;
+    }
 }
 
 body {
@@ -21,6 +63,29 @@ body {
     user-select: none;
 }
 
+#rotatePrompt {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: black;
+    color: white;
+    font-size: calc(1rem + 4vw);
+
+    @media (max-width: 490px) and (orientation: portrait) {
+        display: flex;
+    }
+}
+
+#rotatePrompt svg {
+    height: calc(3rem + 5vw);
+    width: calc(3rem + 5vw);
+    margin-top: 3rem;
+}
 
 /* ################################################ HEADER ################################################ */
 
@@ -28,12 +93,12 @@ body {
     display: flex;
     align-items: center;
 
-    height: 50px;
+    height: 3.125rem;
     width: 100%;
     margin-top: 0;
     margin-bottom: 5px;
-    border-top: 3px solid navy;
-    border-bottom: 3px solid navy;
+    border-top: .1875rem solid navy;
+    border-bottom: .1875rem solid navy;
     background-color: blue;
 
     text-shadow:
@@ -47,7 +112,7 @@ body {
     -1px  0   0 navy;
 }
     #headerTitle {
-        font-size: 40px;
+        font-size: 2.5rem;
         margin: 0 auto;
         padding: 0;
     }
@@ -63,7 +128,7 @@ body {
         position: absolute;
         
         margin: 0;
-        right: 8px;
+        right: .5rem;
         color: white;
         cursor: pointer;
     }
@@ -73,7 +138,7 @@ body {
 #main-content {
     display: flex;
     align-items: center;
-    height: calc(100vh - 50px);
+    height: calc(100vh - 3.125rem);
     width: 100%;
 }
     .collapser {
@@ -85,12 +150,16 @@ body {
 
         width: 4.375rem;
         height: 41.875rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
         z-index: 1;
 
         font-size: 2.5rem;
         font-weight: bold;
         cursor: pointer;
+        
+        @media (max-height: 435px) {
+            margin-top: -5px;
+        }
     }
         #colourCollapser {
             left: 0;
@@ -128,13 +197,17 @@ body {
             
             width: 0rem;
             height: 41.875rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             z-index: 1;
             
             background-color: rgb(235, 235, 235);
             overflow: hidden; /* Disable horizontal scroll */
             transition: 0.5s; 
             box-sizing: border-box; /* Disable resizing of element when padding is changed */
+
+            @media (max-height: 435px) {
+                margin-top: -5px;
+            }
         }
             #colourContent {
                 left: 0;
@@ -147,6 +220,11 @@ body {
 
     #gameCont_1 {
         margin: 0 auto;
+        margin-bottom: 2.4rem;
+
+        @media (max-height: 403px) {
+            scale: 1.05
+        }
     }
 
         #gameCont_2 {
@@ -168,16 +246,37 @@ body {
                     .clockIcon {
                         display: none;
                         position: absolute;
-
                         margin-left: -5.4375rem; /* Place outside bounds of parent div */
+
+                        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+                        opacity: 0;
+
+                        &#clockIcon_1 {
+                            transform: translateY(1rem);
+                        }
+                        &#clockIcon_2 {
+                            transform: translateY(-1rem);
+                        }
+        
+                        &.animate_1 {
+                            display: inline-block;
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
                     }
 
                     .countdown {
-                        display: inline-block;
                         position: absolute;
-
                         margin-left: -3.4375rem; /* Place outside bounds of parent div */
                         font-size: 1.5rem;
+                        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+                        transform: translateX(-3rem);
+                        opacity: 0;
+        
+                        &.animate_1 {
+                            opacity: 1;
+                            transform: translateX(0);
+                        }
                     }
 
                     .blinkCountdown {
@@ -204,14 +303,14 @@ body {
                         display: inline-block;
                         margin: auto;
                         text-shadow:
-                            -0.0313rem -0.0313rem 0 navy,
-                            0   -0.0313rem 0 navy,
-                            .0313rem -0.0313rem 0 navy,
-                            .0313rem  0   0 navy,
-                            .0313rem  .0313rem 0 navy,
-                            0    .0313rem 0 navy,
-                            -0.0313rem  .0313rem 0 navy,
-                            -0.0313rem  0   0 navy;
+                            -0.5px -0.5px 0 navy,
+                            0   -0.5px 0 navy,
+                            .5px -0.5px 0 navy,
+                            .5px  0   0 navy,
+                            .5px  .5px 0 navy,
+                            0    .5px 0 navy,
+                            -0.5px  .5px 0 navy,
+                            -0.5px  0   0 navy;
                     }
 
                     .playerColourChoice {
@@ -236,9 +335,16 @@ body {
                         }
 
             #winner {
-                display: inline-block;
-            }
-                .animateText {
+                transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+                transform: translateY(-2rem);
+                opacity: 0;
+
+                &.animate_1 {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                &.animateText {
                     background-image: linear-gradient(
                         -225deg,
                         black 0%,
@@ -261,41 +367,42 @@ body {
                             background-position: 200% center;
                         }
                     }
+            }
 
-            .resetElement {
+            #resetButton {
+                cursor: pointer;
                 width:  6.875rem;
                 height: 3.125rem;
                 margin-left: 1.6919rem;
                 font-size: 1.5625rem;
                 font-weight: 550;
                 padding: 0;
-                cursor: default;
-            }
-                #resetPlaceHolder { /* For aligning colour swap text */
-                    display: inline-block;
-                }
+                transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+                transform: translateX(4rem);
+                opacity: 0;
 
-                #resetButton {
-                    display: none;
-                    cursor: pointer;
+                &.animate_1 {
+                    opacity: 1;
+                    transform: translateX(0);
                 }
+            }
 
         .hoverCont {
+            position: fixed;
             display: flex;
             flex-wrap: wrap;
-            position: absolute;
 
             width: 39.375rem;
             height: 5.625rem;
-            margin: 0;
-            bottom: 33.75rem;
+            margin-top: -5.5rem;
             border: .625rem solid transparent;
+            z-index: 5;
             border-top-width: 0;
             border-bottom-width: 0;
             pointer-events: none;
         }
-            #hoverCont_DC { /* Doubles column */
-                bottom: 39.375rem;
+            #hoverCont_DC { /* hoverCont doubles column gamemode */
+                margin-top: -10.5rem;
             }
 
             .hoverTile {
@@ -314,7 +421,6 @@ body {
 
             width:  39.375rem;
             height: 33.75rem;
-            margin-bottom: 1.5rem;
         
             background-color: blue;
             border: .625rem solid navy;

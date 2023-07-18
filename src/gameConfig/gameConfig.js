@@ -47,11 +47,12 @@ function mainReset() { // Avoid multiple "setInterval" instances when changing s
         }
         countdown_1.innerHTML = startMin + ":00";
         countdown_2.innerHTML = startMin + ":00";
+        $(".countdown").addClass("animate_1");
         blitzStart = true;
-        winner.innerText = "";
         board_html.remove();
         $(".countdown").removeClass("blinkCountdown");
         $("#winner").removeClass("animateText");
+        $("#winner").removeClass("animate_1");
         setGame();
         gameEnd();
     }
@@ -161,9 +162,8 @@ blitzSlider.oninput = function(){
         case "1":
             startMin = 0;
             clearInterval(playerTime)
-            $(".clockIcon").css({display: "none"});
-            countdown_1.innerHTML = "";
-            countdown_2.innerHTML = "";
+            $(".clockIcon").removeClass("animate_1");
+            $(".countdown").removeClass("animate_1");
             blitzEnabled = false;
             break;
         case "2":

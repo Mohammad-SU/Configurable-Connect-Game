@@ -1,0 +1,448 @@
+:root {
+  --headerFirstColour: red;
+  --headerLastColour: yellow;
+  --blinkBorderColour: red;
+  --winnerTextColour: red;
+}
+
+@media (max-height: 752px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (max-height: 650px), (max-width: 760px) {
+  html {
+    font-size: 13px;
+  }
+}
+@media (max-height: 610px), (max-width: 710px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (max-height: 567px), (max-width: 650px) {
+  html {
+    font-size: 11.5px;
+  }
+}
+@media (max-height: 535px), (max-width: 630px) {
+  html {
+    font-size: 11px;
+  }
+}
+@media (max-height: 515px), (max-width: 610px) {
+  html {
+    font-size: 10px;
+  }
+}
+@media (max-height: 465px), (max-width: 535px) {
+  html {
+    font-size: 9px;
+  }
+}
+@media (max-height: 420px) {
+  html {
+    font-size: 8.9px;
+  }
+}
+@media (max-height: 410px) {
+  html {
+    font-size: 8.7px;
+  }
+}
+@media (max-height: 403px) {
+  html {
+    font-size: 8.3px;
+  }
+}
+@media (max-height: 389px) {
+  html {
+    font-size: 8px;
+  }
+}
+@media (max-height: 374px) {
+  html {
+    font-size: 7.7px;
+  }
+}
+@media (max-height: 357px) {
+  html {
+    font-size: 7.4px;
+  }
+}
+@media (max-height: 357px) {
+  html {
+    font-size: 7px;
+  }
+}
+@media (max-height: 328px) {
+  html {
+    font-size: 6.8px;
+  }
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 0;
+  overflow: hidden;
+  background-color: white;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+#rotatePrompt {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: black;
+  color: white;
+  font-size: calc(1rem + 4vw);
+}
+@media (max-width: 490px) and (orientation: portrait) {
+  #rotatePrompt {
+    display: flex;
+  }
+}
+
+#rotatePrompt svg {
+  height: calc(3rem + 5vw);
+  width: calc(3rem + 5vw);
+  margin-top: 3rem;
+}
+
+/* ################################################ HEADER ################################################ */
+#header {
+  display: flex;
+  align-items: center;
+  height: 3.125rem;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 5px;
+  border-top: 0.1875rem solid navy;
+  border-bottom: 0.1875rem solid navy;
+  background-color: blue;
+  text-shadow: -1px -1px 0 navy, 0 -1px 0 navy, 1px -1px 0 navy, 1px 0 0 navy, 1px 1px 0 navy, 0 1px 0 navy, -1px 1px 0 navy, -1px 0 0 navy;
+}
+
+#headerTitle {
+  font-size: 2.5rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#connectHeaderFirst {
+  color: var(--headerFirstColour);
+}
+
+#connectHeaderLast {
+  color: var(--headerLastColour);
+}
+
+#soundIcon {
+  position: absolute;
+  margin: 0;
+  right: 0.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+/* ################################################ MAIN CONTENT ################################################ */
+#main-content {
+  display: flex;
+  align-items: center;
+  height: calc(100vh - 3.125rem);
+  width: 100%;
+}
+
+.collapser {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 4.375rem;
+  height: 41.875rem;
+  margin-bottom: 1rem;
+  z-index: 1;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+@media (max-height: 435px) {
+  .collapser {
+    margin-top: -5px;
+  }
+}
+
+#colourCollapser {
+  left: 0;
+  transition: margin-left 0.5s;
+}
+
+#colourCollapser_txt {
+  writing-mode: tb-rl;
+  transform: rotate(-180deg);
+}
+
+#configCollapser {
+  right: 0;
+  transition: margin-right 0.5s;
+}
+
+#configCollapser_txt {
+  writing-mode: vertical-lr;
+}
+
+.topArrow {
+  margin-top: 1.25rem;
+  transition: all 0.5s linear;
+}
+
+.bottomArrow {
+  margin-bottom: 1.25rem;
+  transition: all 0.5s linear;
+}
+
+.collapserContent {
+  display: flex;
+  position: fixed;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 0rem;
+  height: 41.875rem;
+  margin-bottom: 1rem;
+  z-index: 1;
+  background-color: rgb(235, 235, 235);
+  overflow: hidden; /* Disable horizontal scroll */
+  transition: 0.5s;
+  box-sizing: border-box; /* Disable resizing of element when padding is changed */
+}
+@media (max-height: 435px) {
+  .collapserContent {
+    margin-top: -5px;
+  }
+}
+
+#colourContent {
+  left: 0;
+}
+
+#configContent {
+  right: 0;
+  padding-bottom: 1.5rem;
+}
+
+#gameCont_1 {
+  margin: 0 auto;
+  margin-bottom: 2.4rem;
+}
+@media (max-height: 403px) {
+  #gameCont_1 {
+    scale: 1.05;
+  }
+}
+
+#gameCont_2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#playerColour_mainCont {
+  display: inline-block;
+}
+
+.playerColour_subCont {
+  display: flex;
+  align-items: center;
+  margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
+}
+
+.clockIcon {
+  display: none;
+  position: absolute;
+  margin-left: -5.4375rem; /* Place outside bounds of parent div */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 0;
+}
+.clockIcon#clockIcon_1 {
+  transform: translateY(1rem);
+}
+.clockIcon#clockIcon_2 {
+  transform: translateY(-1rem);
+}
+.clockIcon.animate_1 {
+  display: inline-block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.countdown {
+  position: absolute;
+  margin-left: -3.4375rem; /* Place outside bounds of parent div */
+  font-size: 1.5rem;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transform: translateX(-3rem);
+  opacity: 0;
+}
+.countdown.animate_1 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.blinkCountdown {
+  animation: blinkCountdown 0.5s linear;
+  animation-iteration-count: 30;
+}
+
+@keyframes blinkCountdown {
+  50% {
+    color: red;
+  }
+}
+.blinkTile {
+  animation: blinkTile 0.5s linear;
+  animation-iteration-count: 30;
+}
+
+@keyframes blinkTile {
+  50% {
+    border-color: var(--blinkBorderColour);
+  }
+}
+.playerColourNum {
+  display: inline-block;
+  margin: auto;
+  text-shadow: -0.5px -0.5px 0 navy, 0 -0.5px 0 navy, 0.5px -0.5px 0 navy, 0.5px 0 0 navy, 0.5px 0.5px 0 navy, 0 0.5px 0 navy, -0.5px 0.5px 0 navy, -0.5px 0 0 navy;
+}
+
+.playerColourChoice {
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  margin-left: 0.4375rem;
+  border-radius: 50%;
+  border: 0.125rem solid rgb(17, 17, 22);
+  box-sizing: border-box;
+}
+
+#PCC_1 {
+  background-color: red;
+  box-shadow: inset 0rem 0rem 0.125rem black;
+}
+
+#PCC_2 {
+  background-color: yellow;
+  box-shadow: inset 0rem 0rem 0.125rem black;
+}
+
+#winner {
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transform: translateY(-2rem);
+  opacity: 0;
+}
+#winner.animate_1 {
+  opacity: 1;
+  transform: translateY(0);
+}
+#winner.animateText {
+  background-image: linear-gradient(-225deg, black 0%, black 29%, var(--winnerTextColour) 30%, var(--winnerTextColour) 35%, black 100%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+}
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+#resetButton {
+  cursor: pointer;
+  width: 6.875rem;
+  height: 3.125rem;
+  margin-left: 1.6919rem;
+  font-size: 1.5625rem;
+  font-weight: 550;
+  padding: 0;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  transform: translateX(4rem);
+  opacity: 0;
+}
+#resetButton.animate_1 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hoverCont {
+  position: fixed;
+  display: flex;
+  flex-wrap: wrap;
+  width: 39.375rem;
+  height: 5.625rem;
+  margin-top: -5.5rem;
+  border: 0.625rem solid transparent;
+  z-index: 5;
+  border-top-width: 0;
+  border-bottom-width: 0;
+  pointer-events: none;
+}
+
+#hoverCont_DC { /* hoverCont doubles column gamemode */
+  margin-top: -10.5rem;
+}
+
+.hoverTile {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  font-size: 2.1875rem;
+  font-weight: 550;
+}
+
+#board_html {
+  display: flex;
+  flex-wrap: wrap;
+  width: 39.375rem;
+  height: 33.75rem;
+  background-color: blue;
+  border: 0.625rem solid navy;
+  box-shadow: 0rem 0rem 0.4375rem black;
+}
+
+.tile {
+  width: 5rem;
+  height: 5rem;
+  margin: 0.3125rem;
+  background-color: white;
+  border-radius: 50%;
+  border: 0.3125rem solid navy;
+  box-sizing: border-box;
+  box-shadow: inset 0rem 0rem 0.3125rem #000000;
+}
+
+.piece_1 {
+  background-color: red;
+  box-shadow: inset 0rem 0rem 0.3125rem #000000;
+}
+
+.piece_2 {
+  background-color: yellow;
+  box-shadow: inset 0rem 0rem 0.3125rem #000000;
+}/*# sourceMappingURL=connect4.css.map */

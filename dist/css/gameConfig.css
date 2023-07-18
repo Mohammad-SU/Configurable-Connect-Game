@@ -1,0 +1,102 @@
+.slideCont_main {
+  position: relative;
+  width: 18.75rem;
+  margin: 0;
+}
+
+.slideCont_sub {
+  margin: 0;
+}
+
+.sliderHeader {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 0.3125rem;
+}
+
+.fa-circle-info {
+  position: absolute;
+  display: inline-block;
+  margin-left: 0.3125rem;
+}
+
+.tooltiptext {
+  position: absolute;
+  visibility: hidden;
+  text-align: center;
+  padding: 0.3125rem 0.3125rem;
+  width: 6.25rem;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -0.8125rem;
+  margin-bottom: 0.3125rem;
+  z-index: 4;
+  font-size: 0.75rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: #f0f0f0;
+  color: black;
+  border: 0.125rem solid #767676;
+  border-radius: 0.3125rem;
+}
+
+.fa-circle-info:hover .tooltiptext {
+  visibility: visible;
+}
+
+.slider {
+  position: absolute;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 0.25rem;
+  bottom: 0.5rem;
+  margin: 0;
+  z-index: 3;
+  background-color: #787878;
+  border-radius: 1.5625rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 1.125rem;
+  height: 1.125rem;
+  z-index: 3;
+  background-color: #f0f0f0;
+  border: 0.125rem solid #767676;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background-color: #e5e5e5;
+}
+
+.ticks {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 0.4375rem;
+  padding-right: 0.4375rem;
+  margin: 0;
+  z-index: 2;
+}
+
+.ticks p {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 0.25rem;
+  height: 1.25rem;
+  line-height: 4.0625rem;
+  margin: 0;
+  z-index: 2;
+  background: #787878;
+  border-radius: 1.5625rem;
+}/*# sourceMappingURL=gameConfig.css.map */

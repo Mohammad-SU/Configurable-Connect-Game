@@ -1,0 +1,50 @@
+.colourCont_2 {
+  display: flex;
+  justify-content: center;
+}
+
+#withMargin {
+  margin-top: 1.875rem;
+}
+
+.playerNum {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-top: 0rem;
+}
+
+.colourGrid {
+  display: flex;
+  flex-wrap: wrap;
+  height: 15.375rem;
+  width: 20.5rem;
+  margin-top: 2.5rem;
+}
+
+.colourTile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.8125rem;
+  height: 4.5rem;
+  width: 4.5rem;
+  margin: 0.3125rem;
+  background-color: white;
+  border-radius: 50%;
+  border: 0.125rem solid black;
+  box-shadow: inset 0rem 0rem 0.3125rem black;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.colourTile:hover {
+  border: 0.1875rem solid red;
+}
+
+.colourTile:active {
+  box-shadow: inset 0rem 0rem 0.3125rem white;
+}/*# sourceMappingURL=colourMenu.css.map */
