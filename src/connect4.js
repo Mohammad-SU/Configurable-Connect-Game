@@ -68,6 +68,9 @@ function setGame() {
     if (board_html.offsetHeight < board_html.scrollHeight || board_html.offsetWidth < board_html.scrollWidth) {
         $("#board_html").css({"width": tileFullSize * columns + browserAdd+"rem", "height": tileFullSize * rows+"rem"});
     }
+    if (board_html.offsetHeight < board_html.scrollHeight || board_html.offsetWidth < board_html.scrollWidth) {
+        $("#board_html").css({"width": tileFullSize * columns + browserAdd+0.02+"rem", "height": tileFullSize * rows+"rem"});
+    }
     
     const hoverTiles = document.querySelectorAll(".hoverTile");
     const tiles = document.querySelectorAll(".tile");
