@@ -60,16 +60,19 @@ function setGame() {
         if (doublesColumn) {hoverTileSet(hoverCont_DC, c+"-"+"DC")}
     }
 
-    $("#board_html").css({"width": tileFullSize * columns + 0+"rem", "height": tileFullSize * rows+"rem"});
+    $("#board_html").css({"width": tileFullSize * columns+"rem", "height": tileFullSize * rows+"rem"});
     $(".tile").css({"width": tileSize+"rem", "height": tileSize+"rem", "margin": tileMargins+"rem", "borderWidth": tileBorderWidth+"rem", "boxShadow": "inset 0rem 0rem "+ tileBorderWidth+"rem" + " black"});
     $(".hoverTile").css({"width": tileSize-tileBorderWidth+"rem", "height": tileSize-tileBorderWidth+"rem", "margin": tileMargins+(tileBorderWidth/2)+"rem", "fontSize": tileSize/2-tileMargins+"rem"});
     $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"rem"});
-    
+    $("#hoverCont_DC").css({"margin-bottom": tileFullSize - (tileFullSize * 0.1)+"rem"});
+
     if (board_html.offsetHeight < board_html.scrollHeight || board_html.offsetWidth < board_html.scrollWidth) {
-        $("#board_html").css({"width": tileFullSize * columns + browserAdd+"rem", "height": tileFullSize * rows+"rem"});
+        $("#board_html").css({"width": tileFullSize * columns + browserAdd+"rem"});
+        $(".hoverCont").css({"width": board_html.style.width})
     }
     if (board_html.offsetHeight < board_html.scrollHeight || board_html.offsetWidth < board_html.scrollWidth) {
-        $("#board_html").css({"width": tileFullSize * columns + browserAdd+0.02+"rem", "height": tileFullSize * rows+"rem"});
+        $("#board_html").css({"width": tileFullSize * columns + browserAdd+0.02+"rem"});
+        $(".hoverCont").css({"width": board_html.style.width})
     }
     
     const hoverTiles = document.querySelectorAll(".hoverTile");
@@ -451,7 +454,11 @@ function gameEnd() {
     if (winner.innerText == "Draw!") {resetButton.innerText = "Reset";}
     $("#resetButton").addClass("animate_1");
     resetButton.addEventListener("click", resetGame);
-    if (updateCountdown_running) {clearInterval(playerTime)};
+    if (updateCountdown_running) {
+        clearInterval(playerTime);
+        clearInterval(playerTime);
+        clearInterval(playerTime);
+    };
 }
 
 function resetGame() {
@@ -508,9 +515,13 @@ function resetGame() {
             if (countdown_1.innerText == "0:00" || countdown_2.innerText == "0:00") {
                 setWinner_countdown();
                 clearInterval(playerTime);
+                clearInterval(playerTime);
+                clearInterval(playerTime);
                 updateCountdown_running = false;
             }
             else if (gameOver == true) {
+                clearInterval(playerTime);
+                clearInterval(playerTime);
                 clearInterval(playerTime);
                 updateCountdown_running = false;
             }   
@@ -519,21 +530,6 @@ function resetGame() {
 
     setGame();
 }
-
-function handleBlitzOverlap() {
-    const clockIcon_1 = document.querySelector("#clockIcon_1")
-    rect = clockIcon_1.getBoundingClientRect();
-    x = rect.left;
-    y = rect.top;
-    topElt = document.elementFromPoint(x, y);
-    if (clockIcon_1.isSameNode(topElt)) {
-        console.log('no overlapping');
-    }
-}
-$(window).on('resize', function() { // If window width is resized, run functions
-    handleBlitzOverlap();
-})
-handleBlitzOverlap();
 
 
 

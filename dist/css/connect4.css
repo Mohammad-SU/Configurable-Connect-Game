@@ -241,6 +241,7 @@ body {
 }
 
 #gameCont_1 {
+  position: relative;
   margin: 0 auto;
   margin-bottom: 2.4rem;
 }
@@ -251,6 +252,7 @@ body {
 }
 
 #gameCont_2 {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -270,7 +272,7 @@ body {
 .clockIcon {
   display: none;
   position: absolute;
-  margin-left: -5.4375rem; /* Place outside bounds of parent div */
+  margin-left: 12.3rem;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   opacity: 0;
 }
@@ -288,10 +290,10 @@ body {
 
 .countdown {
   position: absolute;
-  margin-left: -3.4375rem; /* Place outside bounds of parent div */
+  margin-left: 9rem;
   font-size: 1.5rem;
   transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-  transform: translateX(-3rem);
+  transform: translateX(3rem);
   opacity: 0;
 }
 .countdown.animate_1 {
@@ -389,13 +391,13 @@ body {
 }
 
 .hoverCont {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
-  width: 39.375rem;
+  width: 39.39rem;
   height: 5.625rem;
-  margin-top: -5.5rem;
   border: 0.625rem solid transparent;
+  bottom: 0;
   z-index: 5;
   border-top-width: 0;
   border-bottom-width: 0;
@@ -403,7 +405,7 @@ body {
 }
 
 #hoverCont_DC { /* hoverCont doubles column gamemode */
-  margin-top: -10.5rem;
+  margin-top: -6rem;
 }
 
 .hoverTile {

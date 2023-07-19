@@ -42,7 +42,9 @@ var playerTime;
 function mainReset() { // Avoid multiple "setInterval" instances when changing sliders.
     if (blitzEnabled) {
         if (updateCountdown_running) {
-            clearInterval(playerTime)
+            clearInterval(playerTime);
+            clearInterval(playerTime);
+            clearInterval(playerTime);
             updateCountdown_running = false;
         }
         countdown_1.innerHTML = startMin + ":00";
@@ -165,7 +167,9 @@ blitzSlider.oninput = function(){
     switch (blitzSlider.value) {
         case "1":
             startMin = 0;
-            clearInterval(playerTime)
+            clearInterval(playerTime);
+            clearInterval(playerTime);
+            clearInterval(playerTime);
             $(".clockIcon").removeClass("animate_1");
             $(".countdown").removeClass("animate_1");
             blitzEnabled = false;
