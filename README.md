@@ -1,7 +1,7 @@
 # Configurable Connect 4 Game
 ## Test the program: https://configurable-connect4-game.netlify.app/
 
-![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png)
+![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png?)
 
 ### Current features:
 - Connect 4 game
@@ -14,7 +14,7 @@
 - Players can change the colours of their pieces and related animations
 - Animations, such as falling pieces, blinking of winning pieces, etc.
 - Sound effects (from ZapSplat.com)
+- Responsive CSS
 
 ### Future update ideas:
 - AI opponent using the minimax algorithm and alpha-beta pruning
-- Correct formatting for non-desktop devices
