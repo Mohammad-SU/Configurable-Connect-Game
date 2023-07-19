@@ -138,7 +138,7 @@ body {
 #main-content {
     display: flex;
     align-items: center;
-    height: calc(100vh - 3.125rem);
+    height: calc(100dvh - 3.125rem);
     width: 100%;
 }
     .collapser {
@@ -419,7 +419,7 @@ body {
             display: flex;
             flex-wrap: wrap;
 
-            width:  39.375rem;
+            width:  39.39rem;
             height: 33.75rem;
         
             background-color: blue;

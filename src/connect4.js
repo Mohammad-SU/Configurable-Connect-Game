@@ -59,10 +59,15 @@ function setGame() {
         hoverTileSet(hoverCont_1, c)
         if (doublesColumn) {hoverTileSet(hoverCont_DC, c+"-"+"DC")}
     }
-    $("#board_html").css({"width": tileFullSize * columns+"rem", "height": tileFullSize * rows+"rem"});
+
+    $("#board_html").css({"width": tileFullSize * columns + 0+"rem", "height": tileFullSize * rows+"rem"});
     $(".tile").css({"width": tileSize+"rem", "height": tileSize+"rem", "margin": tileMargins+"rem", "borderWidth": tileBorderWidth+"rem", "boxShadow": "inset 0rem 0rem "+ tileBorderWidth+"rem" + " black"});
     $(".hoverTile").css({"width": tileSize-tileBorderWidth+"rem", "height": tileSize-tileBorderWidth+"rem", "margin": tileMargins+(tileBorderWidth/2)+"rem", "fontSize": tileSize/2-tileMargins+"rem"});
     $(".hoverCont").css({"width": board_html.style.width, "height": tileFullSize+"rem"});
+    
+    if (board_html.offsetHeight < board_html.scrollHeight || board_html.offsetWidth < board_html.scrollWidth) {
+        $("#board_html").css({"width": tileFullSize * columns + browserAdd+"rem", "height": tileFullSize * rows+"rem"});
+    }
     
     const hoverTiles = document.querySelectorAll(".hoverTile");
     const tiles = document.querySelectorAll(".tile");

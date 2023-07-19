@@ -20,11 +20,13 @@
 }
 
 .colourGrid {
+    min-height: 0;
+    min-width: 0;
     display: flex;
     flex-wrap: wrap;
 
     height: 15.375rem;
-    width:  20.5rem;
+    width:  20.51rem;
     margin-top: 2.5rem;
 }
     .colourTile {

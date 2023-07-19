@@ -65,8 +65,11 @@ var tileFullSize = 5.625;  // Including margins
 var tileMargins = .3125;
 var tileSize = tileFullSize - (tileMargins * 2);
 var tileBorderWidth = .3125;
+var browserAdd = 0.02;
 
 sizeSlider.oninput = function() {
+    browserAdd = 0.02
+    
     switch (sizeSlider.value) {
         case "1": // 20 slots
             rows = 4;
@@ -123,6 +126,7 @@ sizeSlider.oninput = function() {
             tileFullSize = 3.1875;
             tileMargins = .1875;
             tileBorderWidth = .25;
+            browserAdd = 0.03
             break;
         case "9": // 156
             rows = 12;
