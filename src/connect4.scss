@@ -1,6 +1,6 @@
 :root {
-    --headerFirstColour: red;
-    --headerLastColour: yellow;
+    --headerColour_1: red;
+    --headerColour_2: yellow;
     --blinkBorderColour: red;
     --winnerTextColour: red;
 }
@@ -116,12 +116,12 @@ body {
         margin: 0 auto;
         padding: 0;
     }
-        #connectHeaderFirst {
-            color: var(--headerFirstColour);
+        .headerTitle_1 {
+            color: var(--headerColour_1);
         }
 
-        #connectHeaderLast {
-            color: var(--headerLastColour);
+        .headerTitle_2 {
+            color: var(--headerColour_2);
         }
     
     #soundIcon {
@@ -248,8 +248,6 @@ body {
                     .clockIcon {
                         display: none;
                         position: absolute;
-                        margin-left: 12.3rem;
-
                         transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
                         opacity: 0;
 
@@ -316,8 +314,6 @@ body {
                     }
 
                     .playerColourChoice {
-                        display: inline-block;
-
                         width:  1.875rem;
                         height: 1.875rem;
                         margin-left: .4375rem;

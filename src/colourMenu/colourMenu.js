@@ -60,7 +60,8 @@ function changeColour_1() {
     colour_1 = this.style.backgroundColor;
     $(".piece_1").css({"backgroundColor": colour_1});
     PCC_1.style.backgroundColor = colour_1;
-    root.style.setProperty("--headerFirstColour", colour_1);
+    root.style.setProperty("--headerColour_1", colour_1);
+    changeHeaderTitle();
     colourAnimation();
     changePlayerColourNumText();
 }
@@ -81,7 +82,8 @@ function changeColour_2() {
     colour_2 = this.style.backgroundColor;
     $(".piece_2").css({"backgroundColor": colour_2});
     PCC_2.style.backgroundColor = colour_2;
-    root.style.setProperty("--headerLastColour", colour_2);
+    root.style.setProperty("--headerColour_2", colour_2);
+    changeHeaderTitle();
     colourAnimation();
     changePlayerColourNumText();
 }

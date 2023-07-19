@@ -151,8 +151,7 @@ connectSlider.oninput = function() {
     connectNum = parseInt(connectSlider.value);
     connectNeg = connectNum - 1;
     document.title = ("Connect " + connectNum);
-    document.getElementById("connectHeaderLast").innerText = ("ect " + connectNum);
-    
+    changeHeaderTitle();
     mainReset();
 }
 

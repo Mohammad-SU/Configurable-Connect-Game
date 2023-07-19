@@ -5,7 +5,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
      
-   <title>Connect 4</title>
+   <title>Configurable-Connect-4</title>
    <link rel="apple-touch-icon" sizes="180x180" href="src/assets/favicon/apple-touch-icon.png">
    <link rel="icon" type="image/png" sizes="32x32" href="src/assets/favicon/favicon-32x32.png">
    <link rel="icon" type="image/png" sizes="16x16" href="src/assets/favicon/favicon-16x16.png">
@@ -25,7 +25,7 @@
    </div>
 
    <div id="header">
-      <h1 id="headerTitle"> <span id="connectHeaderFirst">Conn</span><span id="connectHeaderLast">ect 4</span> </h1>
+      <h1 id="headerTitle"></h1>
       <i class="fa-solid fa-volume-high fa-2x" id="soundIcon"></i>
    </div>
    
@@ -78,16 +78,18 @@
          <div id="gameCont_2">
             <div id="playerColour_mainCont">
                <div class="playerColour_subCont">
-                  <i class="clockIcon fa-solid fa-clock fa-beat-fade fa-lg" id="clockIcon_1"></i>
                   <div class="countdown" id="countdown_1"></div>
                   <h2 class="playerColourNum" id="playerColourNum_1">Player 1:</h2>
-                  <div class="playerColourChoice" id="PCC_1"></div>
+                  <div class="playerColourChoice" id="PCC_1">
+                     <i class="clockIcon fa-solid fa-clock fa-beat-fade fa-lg" id="clockIcon_1"></i>
+                  </div>
             </div>
                <div class="playerColour_subCont">
-                  <i class="clockIcon fa-solid fa-clock fa-beat-fade fa-lg" id="clockIcon_2"></i>
                   <div class="countdown" id="countdown_2"></div>
                   <h2 class="playerColourNum" id="playerColourNum_2">Player 2:</h2>
-                  <div class="playerColourChoice" id="PCC_2"></div>
+                  <div class="playerColourChoice" id="PCC_2">
+                     <i class="clockIcon fa-solid fa-clock fa-beat-fade fa-lg" id="clockIcon_2"></i>
+                  </div>
                </div>
             </div>
             <h2 id="winner"></h2>

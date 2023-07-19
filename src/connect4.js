@@ -23,6 +23,38 @@ function changePlayerColourNumText() {
     }
 }
 
+function changeHeaderTitle() {
+    $("#headerTitle").text("")
+    var textArray = ("Configurable Connect " + connectNum).split("")
+    textArray = textArray.filter(e => e !== ' ');
+    var firstColour = true;
+    for (let i = 0; i < textArray.length; i += connectNum) {
+        var chunk = textArray.slice(i, i + connectNum);
+        if (firstColour) {
+            $("#headerTitle").append("<span class='headerTitle_1'>" + chunk.join("") + "</span>")
+            firstColour = false
+        }
+        else {
+            $("#headerTitle").append("<span class='headerTitle_2'>" + chunk.join("") + "</span>")
+            firstColour = true 
+        }
+    }
+
+    $("#headerTitle span").each(function(index) {
+        if ($(this).is(':contains("le")')) {
+           text = this.innerText
+           text = text.replace("le", "le ")
+           this.innerText = text
+        }
+        if ($(this).is(`:contains(${connectNum})`)) {
+            text = this.innerText
+            text = text.replace(connectNum, ` ${connectNum}`)
+            this.innerText = text
+        }
+    })
+}
+changeHeaderTitle();
+
 setGame();
 function setGame() {
     let board_html = document.createElement("div");
@@ -30,6 +62,7 @@ function setGame() {
     document.getElementById("gameCont_1").append(board_html);
     board = [];
     currColumns = currColumnsSize;
+
     if (swapEnabled) {
         rounds = 1;
         $("#winner").addClass("animate_1");
@@ -438,6 +471,7 @@ function setWinner_countdown() {
     winner.classList.add("animateText");
     $("#winner").addClass("animate_1");
     colourAnimation();
+    winnerSFX.play();
     gameEnd();
 }
 
@@ -511,7 +545,6 @@ function resetGame() {
                 $("#clockIcon_2").addClass("animate_1");    
             }
 
-            if (countdown_1.innerText == "0:01" || countdown_2.innerText == "0:01") {winnerSFX.play()}; // Due to sound delay
             if (countdown_1.innerText == "0:00" || countdown_2.innerText == "0:00") {
                 setWinner_countdown();
                 clearInterval(playerTime);
