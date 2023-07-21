@@ -1,5 +1,5 @@
 # Configurable Connect 4 Game
-## Test the program: https://configurable-connect4-game.netlify.app/
+## Test the program: https://configurable-connect-game.netlify.app/
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png?)
 
