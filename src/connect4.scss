@@ -6,7 +6,13 @@
 }
 
 html {
-    @media (max-height: 752px) {
+    @media (max-height: 740px) {
+        font-size: 15px;
+    }
+    @media (max-height: 720px) {
+        font-size: 14.5px;
+    }
+    @media (max-height: 690px) {
         font-size: 14px;
     }
     @media (max-height: 650px), (max-width: 760px) {

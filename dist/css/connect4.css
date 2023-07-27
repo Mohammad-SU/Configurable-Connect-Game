@@ -5,7 +5,17 @@
   --winnerTextColour: red;
 }
 
-@media (max-height: 752px) {
+@media (max-height: 740px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-height: 720px) {
+  html {
+    font-size: 14.5px;
+  }
+}
+@media (max-height: 690px) {
   html {
     font-size: 14px;
   }
