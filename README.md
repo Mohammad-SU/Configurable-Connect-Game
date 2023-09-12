@@ -9,7 +9,7 @@
   - Max number of slots
   - Number of connected pieces required to win
   - A countdown timer (if it reaches zero, the other player wins)
-  - Enable players to drop two pieces per turn, with different modes
+  - Enable players to drop two pieces per turn, with different modes (row, column, or any)
   - Enable pieces to swap to the opposing player's colour every selected round
 - Players can change the colours of their pieces and related animations
 - Animations, such as falling pieces, blinking of winning pieces, etc.
