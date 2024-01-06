@@ -1,4 +1,5 @@
 # Configurable Connect 4 Game
+The first-ever web dev portfolio project I created.
 ## Test the program: https://configurable-connect-game.netlify.app/
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png?)
