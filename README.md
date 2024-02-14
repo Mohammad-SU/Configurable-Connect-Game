@@ -1,5 +1,5 @@
 # Configurable Connect Game
-The first-ever web dev portfolio project I created. Not as advanced as LimeDrive, my cloud storage service, so make sure you take a look at that if you haven't already!
+The first-ever web dev portfolio project I created. It's not as advanced as [LimeDrive](GitHub.com/Mohammad-SU/LimeDrive-Cloud-Service), my cloud storage service, so make sure you take a look at that if you haven't already!
 ## Test the program: https://configurable-connect-game.netlify.app/
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png?)
