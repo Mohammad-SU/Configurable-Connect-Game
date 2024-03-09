@@ -4,6 +4,9 @@ The first-ever web dev portfolio project I created. It's not as advanced as [Lim
 
 ![Configurable Connect 4 Game - Screenshot](Connect4-screenshot.png?)
 
+### Tech Stack:
+JavaScript/jQuery  •  HTML  •  CSS/Sass
+
 ### Current features:
 - Connect 4 game
 - Multiple configurations/game modes: 
